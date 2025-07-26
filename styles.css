@@ -1,0 +1,167 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    color: #ffffff; /* White text */
+    background-color: #121212; /* Dark mode background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Center everything on the page */
+  .game-container {
+    text-align: center;
+    background-color: #1f1f1f; /* Slightly lighter background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    width: 90%;
+    max-width: 600px; /* Limit container width on larger screens */
+  }
+  
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #00e676; /* Bright green heading */
+  }
+
+  .audio-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Limit the width */
+    background-color: #282828; /* Match the dark theme */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px auto;
+    color: #ffffff; /* White text for controls */
+  }
+  
+  .audio-title {
+    flex: 1; /* Title takes remaining space */
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 15px;
+    color: #00e676; /* Bright green matching game heading */
+  }
+  
+  /* Custom style for the progress bar */
+  .audio-progress {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background: #555555; /* Track color */
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px;
+    overflow: hidden;
+  }
+  
+  .audio-progress-bar {
+    height: 100%;
+    width: 0%; /* Progress will be dynamic */
+    background: #00e676; /* Progress color (green) */
+    transition: width 0.2s;
+  }
+  
+  .audio-button {
+    background: #333333;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .audio-button:hover {
+    background: #00796b; /* Match hover effect with buttons */
+  }
+  
+  .audio-player {
+    display: none; /* Hide default audio player */
+  }
+  
+  .audio {
+    margin: 20px 0;
+    width: 100%;
+  }
+  
+  .choices {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .choice {
+    background-color: #333333; /* Light gray buttons for contrast */
+    color: #ffffff;
+    border: 2px solid #444444; /* Subtle border */
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .choice:hover {
+    background: #00796b; /* Teal hover */
+    color: #ffffff;
+    transform: scale(1.1); /* Slight enlargement */
+  }
+  
+  .score-container {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+  }
+  
+  /* Exit Button */
+  #exitButton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    background: #ff3d00; /* Bright red exit button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  #exitButton:hover {
+    background: #d32f2f; /* Slightly darker hover effect */
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.8em;
+    }
+    
+    .choices {
+      flex-direction: column;
+    }
+  
+    .choice {
+      width: 100%; /* Buttons stack in one column */
+    }
+  }
