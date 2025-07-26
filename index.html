@@ -8,28 +8,34 @@
 </head>
 <body>
   <div class="game-container">
-    <h1>Song Guessing Game</h1>
-    <audio id="audioPlayer" class="audio" controls autoplay></audio>
+    <h1>🎵 Debisirn Song Guessing🎵</h1>
+
+    <!-- Notification Area -->
+    <div id="notification"></div>
+    
+    <!-- Custom Audio Player -->
+    <div class="audio-wrapper">
+      <button id="playPauseButton" class="audio-button">▶</button>
+      <div class="audio-progress" id="audioProgress">
+        <div class="audio-progress-bar" id="audioProgressBar"></div>
+      </div>
+    </div>
+
     <div class="score-container">
       <p>Score: <span id="score">0</span></p>
     </div>
+
     <div class="choices">
       <button class="choice" id="choice1"></button>
       <button class="choice" id="choice2"></button>
       <button class="choice" id="choice3"></button>
       <button class="choice" id="choice4"></button>
     </div>
-    <!-- Audio Player Wrapper -->
-    <div class="audio-wrapper">
-    <button id="playPauseButton" class="audio-button">▶</button> <!-- Play Button -->
-    <div class="audio-title" id="audioTitle">Loading...</div> <!-- Song title -->
-    <div class="audio-progress" id="audioProgress">
-      <div class="audio-progress-bar" id="audioProgressBar"></div> <!-- Dynamic progress -->
-    </div>
-    <audio id="audioPlayer" class="audio-player"></audio> <!-- Default audio hidden -->
-  </div>
+
     <button id="exitButton">Exit</button>
   </div>
+
+  <audio id="audioPlayer" class="audio-player"></audio>
   <script src="script.js"></script>
 </body>
 </html>
