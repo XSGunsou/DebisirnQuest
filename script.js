@@ -5,6 +5,10 @@ const songs = [
   { name: "เทพฯสู้ตาย", file: "song_4.mp3" },
   { name: "ดอกรำเพย", file: "song_5.mp3" },
   { name: "เทพฯไม่สิ้น", file: "song_6.mp3" },
+  { name: "เราเทพศิรินทร์", file: "song_7.mp3" },
+  { name: "จตุรมิตรสามัคคี", file: "song_8.mp3" },
+  { name: "จตุรมิตรสามัคคี (เก่า)", file: "song_9.mp3" },
+  { name: "แผ่นดินเกียรติภูมิ", file: "song_10.mp3" },
 ];
 
 // Shuffle helper function
