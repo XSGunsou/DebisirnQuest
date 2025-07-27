@@ -17,8 +17,11 @@ function shuffleArray(array) {
 }
 
 let score = 0;
-let lastPlayedSongIndex = null;
 let isPlaying = false;
+
+// Song shuffle state
+let shuffledSongs = shuffleArray([...songs]);
+let currentSongIndex = 0;
 
 // Custom player elements
 const audioPlayer = document.getElementById("audioPlayer");
@@ -29,36 +32,32 @@ const notification = document.getElementById("notification");
 
 // Function to display notifications
 function showNotification(message, type) {
-  notification.textContent = message; // Set the notification text
-  notification.className = type; // Add class for correct/wrong styling
-  notification.style.display = "block"; // Show the notification
-
-  // Fade the notification out after 2 seconds
+  notification.textContent = message;
+  notification.className = type;
+  notification.style.display = "block";
   setTimeout(() => {
     notification.style.display = "none";
   }, 2000);
 }
 
-// Load a random song
+// Load the next song in shuffled queue
 function loadRandomSong() {
-  let correctSongIndex;
+  // Reshuffle if at the end of list
+  if (currentSongIndex >= shuffledSongs.length) {
+    shuffledSongs = shuffleArray([...songs]);
+    currentSongIndex = 0;
+  }
 
-  // Ensure no consecutive repeats
-  do {
-    correctSongIndex = Math.floor(Math.random() * songs.length);
-  } while (correctSongIndex === lastPlayedSongIndex);
-  lastPlayedSongIndex = correctSongIndex;
+  const correctSong = shuffledSongs[currentSongIndex];
+  currentSongIndex++;
 
-  const correctSong = songs[correctSongIndex];
-
-  // Set audio player source
   audioPlayer.src = `static/${correctSong.file}`;
   audioPlayer.load();
   audioProgressBar.style.width = "0%";
   playPauseButton.textContent = "▶";
 
-  // Create choices
-  const otherSongs = songs.filter((_, idx) => idx !== correctSongIndex);
+  // Create 3 incorrect choices
+  const otherSongs = songs.filter(song => song.name !== correctSong.name);
   const randomIncorrect = shuffleArray(otherSongs).slice(0, 3);
   const allChoices = shuffleArray([
     correctSong.name,
@@ -70,13 +69,13 @@ function loadRandomSong() {
     button.textContent = allChoices[index];
     button.onclick = () => {
       if (button.textContent === correctSong.name) {
-        showNotification("Correct!", "correct"); // Show correct notification
+        showNotification("Correct!", "correct");
         score++;
       } else {
-        showNotification("Wrong!", "wrong"); // Show wrong notification
+        showNotification("Wrong!", "wrong");
       }
       document.getElementById("score").textContent = score;
-      setTimeout(loadRandomSong, 2000); // Load the next song after 2 seconds
+      setTimeout(loadRandomSong, 2000);
     };
   });
 }
@@ -104,14 +103,13 @@ audioProgress.addEventListener("click", (event) => {
   const width = audioProgress.offsetWidth;
   const clickX = event.offsetX;
   const duration = audioPlayer.duration;
-
   audioPlayer.currentTime = (clickX / width) * duration;
 });
 
 // Exit button logic
 document.getElementById("exitButton").addEventListener("click", () => {
   showNotification(`Game Over! Your final score is: ${score}`, "correct");
-  setTimeout(() => window.location.reload(), 2000); // Reload game after 2 seconds
+  setTimeout(() => window.location.reload(), 2000);
 });
 
 // Start game
